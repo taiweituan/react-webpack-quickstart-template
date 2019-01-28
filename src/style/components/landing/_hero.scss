@@ -1,0 +1,80 @@
+.hero {
+    display: flex;
+    min-height: 650px;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+    height: 90vh;
+    background-color: lightblue;
+    color: darkblue;
+    font-size: 18px;
+    &__title {
+        font-size: 3em;
+        line-height: 1.3em;
+        font-weight: bold;
+        &:last-child{
+            font-weight: normal;
+            font-size: 2em;
+        }
+    }
+}
+
+.avatar {
+    width: 330px;
+    height: 330px;
+    margin: 0 auto;
+    box-shadow: 0 2em 4em rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    border-radius: 160px;
+    background-color: darken(lightblue, 20%);
+    margin-bottom: 15px;
+
+    &__shape {
+        width: 300px; //required
+        height: 300px; //required
+        margin: 0 auto;
+        position: relative;
+        // background: orange;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+
+        img {
+            width: 100%;
+            height: 100%;
+            transition: all .2s ease;
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        text-transform: uppercase;
+        text-align: center;
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+        opacity: 0;
+        transition: all .2s ease-in;
+        backface-visibility: hidden; // fix for text animation
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img {
+        transform: scale(1);
+        filter: blur(2px) brightness(80%);
+        // make blue
+        // brightness > 100% -> brighter
+    }
+}
