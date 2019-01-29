@@ -13,6 +13,7 @@ module.exports = {
         path: path.join(__dirname, "/dist"),
         filename: "bundle.js"
     },
+    devtool: "source-map",
     module: {
         rules: [{
             test: /\.js$/,
@@ -28,9 +29,13 @@ module.exports = {
                     name: "bundle.css",
                 },
             },
-            {loader: "extract-loader"},
-            {loader: "css-loader"},
-            {loader: "postcss-loader",
+            {loader: "extract-loader"}, {
+                loader: "css-loader", 
+                options: {
+                    sourceMap: true
+                }
+            }, {
+                loader: "postcss-loader",
                 options: {
                     plugins: () => [autoprefixer()],
                 },
@@ -38,6 +43,7 @@ module.exports = {
                 loader: "sass-loader",
                 options: {
                     includePaths: ["./node_modules"],
+                    sourceMap: true
                 },
             }]
         }]
