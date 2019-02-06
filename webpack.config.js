@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const autoprefixer = require("autoprefixer");
+// const devMode = process.env.NODE_ENV !== 'production';
+
 
 module.exports = {
     entry: {
@@ -24,21 +25,12 @@ module.exports = {
         }, {
             test: /\.scss$/,
             use: [{
-                loader: "file-loader",
-                options: {
-                    name: "bundle.css",
-                },
-            },
-            {loader: "extract-loader"}, {
+                loader: "style-loader"
+            }, {
                 loader: "css-loader", 
                 options: {
                     sourceMap: true
                 }
-            }, {
-                loader: "postcss-loader",
-                options: {
-                    plugins: () => [autoprefixer()],
-                },
             },{
                 loader: "sass-loader",
                 options: {
