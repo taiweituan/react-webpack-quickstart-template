@@ -5,8 +5,9 @@
 `git clone https://github.com/taiweituan/react-webpack-quickstart-template.git`
 2. Update your npm by <br> `npm update npm`
 3. Install npm packages<br>`npm i`
-4. Lastly, start the dev server<br>`npm start`
-5. Voila!
+4. Build the web app scrip and styles <br> `npm run build`
+5. Lastly, start the dev server<br>`npm start`
+6. Voila!
 
 # TODO
 
