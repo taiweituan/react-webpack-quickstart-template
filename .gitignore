@@ -60,12 +60,15 @@ typings/
 # next.js build output
 .next
 
-# webpack stuff
-bundle.js
-bundle.min.js
-
 # MAC specific
 .DS_Store
 
-# DIST directory
-dist/
+# DIST directory / Compiled Front-End files
+public/
+
+# DB file for development
+data/
+*.sqlite
+
+# VS Code Config
+.vscode/
