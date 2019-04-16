@@ -1,57 +1,73 @@
-const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const autoprefixer = require("autoprefixer");
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+// const devMode = process.env.NODE_ENV !== 'production';
+
+const VENDER_CHUNK = ['react', 'react-dom', 'react-router-dom'];
 
 module.exports = {
     entry: {
-        main: [
-            "./src/index.js", 
-            "./src/style/main.scss"
-        ]
+        index: [
+            './views/index.js', 
+            './views/style/main.scss'
+        ],
+        vender: VENDER_CHUNK    // code splitting / optimization
     },
     output: {
-        path: path.join(__dirname, "/dist"),
-        filename: "bundle.js"
+        filename: '[name].bundle.js',
+        path: path.join(__dirname, '/public')
     },
-    devtool: "source-map",
+    optimization: {
+        splitChunks:{
+            chunks: 'all'
+        }
+    },
+    devtool: 'source-map',
     module: {
         rules: [{
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
-                loader: "babel-loader"
+                loader: 'babel-loader'
             }
         }, {
             test: /\.scss$/,
             use: [{
-                loader: "file-loader",
-                options: {
-                    name: "bundle.css",
-                },
-            },
-            {loader: "extract-loader"}, {
-                loader: "css-loader", 
+                loader: 'style-loader'
+            }, {
+                loader: 'css-loader', 
                 options: {
                     sourceMap: true
                 }
-            }, {
-                loader: "postcss-loader",
-                options: {
-                    plugins: () => [autoprefixer()],
-                },
             },{
-                loader: "sass-loader",
+                loader: 'sass-loader',
                 options: {
-                    includePaths: ["./node_modules"],
+                    includePaths: ['./node_modules'],
                     sourceMap: true
                 },
             }]
+        }, {
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            use: 'file-loader'
         }]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
-            template: "./src/index.html",
-            filename: "./index.html"
+            template: __dirname + '/views/index.ejs',
+            filename: 'index.html',
+            inject: 'body'
         })
-    ]
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, 'public'),
+        compress: false,
+        port: 3002,
+        proxy: {
+            '/': {
+                target:'http://localhost:3001'
+            }
+        }
+    }
 };

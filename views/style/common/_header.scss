@@ -3,6 +3,9 @@
     justify-content: space-between;
     color: $font-on-primary;
     background-color: $primary-variant-color;
+    width: 100%;
+    position: absolute;
+    
     &__checkbox {
         display: none;
     }
