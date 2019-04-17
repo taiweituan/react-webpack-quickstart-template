@@ -4,6 +4,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import Header from './common/Header';
 import HomePage from './pages/HomePage';
 
+import {Container} from 'react-bootstrap';
 import history from '../history';
 
 export default class App extends Component {
@@ -13,14 +14,14 @@ export default class App extends Component {
                 <Router history={history}>
                     <div>
                         <Header />
-                        <div className="container">
+                        <Container fluid>
                             <Switch>
                                 <Route path="/" exact component={HomePage}></Route>
                                 {/* <Route path="/todos/new" component={TodoCreate}></Route>
                                 <Route path="/todos/delete/:id" component={TodoDelete}></Route>
                                 <Route path="/todos/edit/:id" component={TodoEdit}></Route> */}
                             </Switch>
-                        </div >
+                        </Container>
                     </div>
                 </Router>
             </div>

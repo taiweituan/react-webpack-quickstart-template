@@ -14,7 +14,7 @@ export default class Header extends Component {
                         height="30"
                         className="d-inline-block align-top"
                     />
-                    {' React Bootstrap'}
+                    Quick Template
                 </Navbar.Brand>
             </Navbar>
         );
