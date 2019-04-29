@@ -12,17 +12,15 @@ export default class App extends Component {
         return (
             <div>
                 <Router history={history}>
-                    <div>
-                        <Header />
-                        <Container fluid>
-                            <Switch>
-                                <Route path="/" exact component={HomePage}></Route>
-                                {/* <Route path="/todos/new" component={TodoCreate}></Route>
-                                <Route path="/todos/delete/:id" component={TodoDelete}></Route>
-                                <Route path="/todos/edit/:id" component={TodoEdit}></Route> */}
-                            </Switch>
-                        </Container>
-                    </div>
+                    <Header />
+                    <Container fluid>
+                        <Switch>
+                            <Route path="/" exact component={HomePage}></Route>
+                            {/* <Route path="/todos/new" component={TodoCreate}></Route>
+                            <Route path="/todos/delete/:id" component={TodoDelete}></Route>
+                            <Route path="/todos/edit/:id" component={TodoEdit}></Route> */}
+                        </Switch>
+                    </Container>
                 </Router>
             </div>
         );
