@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
@@ -21,9 +22,9 @@ export default class Header extends Component {
                     <Navbar.Collapse id="responsive-navbar-nav">
 
                         <Nav className="mr-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link2">Link2</Nav.Link>
-                            <Nav.Link href="#link3">Link3</Nav.Link>
+                            <Link className="nav-link" to="/">Home</Link>
+                            <Link className="nav-link" to="/about">About</Link>
+                            <Nav.Link href="https://www.github.com" alt="external link">Link3</Nav.Link>
                         </Nav>
                         <Nav className="justify-content-end">
                             <Nav.Link href="#link4">Link4</Nav.Link>
